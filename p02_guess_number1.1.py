@@ -27,7 +27,7 @@ while times>=0:                           # 剩0次时还能再猜最后一次�
         print(f"猜大了，还剩{times}次")
         continue
 else:
-    print(f"次数用完啦，答案是{num}，")
-chance=input("请问你想再来一局还是退出")
+    print(f"次数用完啦，答案是{num}，下次再来")
+
 
 
