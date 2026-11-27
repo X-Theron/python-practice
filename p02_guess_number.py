@@ -1,9 +1,12 @@
 import random
 
+MIN_NUM = 1
+MAX_NUM = 100
+MAX_TRIES = 7
 def game():
-    print("游戏开始，范围 1–100，你一共有 7 次机会，开始吧！")
-    num = random.randint(1, 100)
-    times = 7
+    print(f"游戏开始，范围 {MIN_NUM}-{MAX_NUM}，你一共有 {MAX_TRIES} 次机会，开始吧！")
+    num = random.randint(MIN_NUM,MAX_NUM )
+    times = MAX_TRIES
     while times > 0:
         try:
             guess_number = int(input("请输入数字"))
@@ -31,21 +34,23 @@ def game():
             print(f"猜大了，还剩{times}次")
     print(f"次数用完啦，答案是{num}，")
     return False, num
-win_times=0
-lose_times=0
-while True:
-    won,info=game()
-    if won:
-        win_times += 1
-    else:
-        lose_times += 1
+
+if __name__ == "__main__":
+    win_times=0
+    lose_times=0
     while True:
-        chance = input("再来一次还是退出?")
-        if chance in ("再来一次", "退出"):
+        won,info=game()
+        if won:
+            win_times += 1
+        else:
+            lose_times += 1
+        while True:
+            chance = input("再来一次还是退出?")
+            if chance in ("再来一次", "退出"):
+                break
+            print("不认识的指令,请重新输入")
+        if chance == "退出":
             break
-        print("不认识的指令,请重新输入")
-    if chance == "退出":
-        break
-print(f"在游玩过程中，您一共赢了{win_times}次，输了{lose_times}次")
+    print(f"在游玩过程中，您一共赢了{win_times}次，输了{lose_times}次")
 
 
